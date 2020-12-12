@@ -1,0 +1,77 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "春田花花幼稚园"
+			}
+		},
+    {
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "欢迎登录"
+			}
+		},
+    {
+			"path": "pages/login/code",
+			"style": {
+				"navigationBarTitleText": "手机验证码"
+			}
+		},    
+		{
+			"path": "pages/scan/index",
+			"style": {
+				"navigationBarTitleText": "扫码认证"
+			}
+		},
+		{
+			"path": "pages/my/index",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		}
+	    ,{
+            "path" : "pages/index/news/news",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "春田花花幼稚园",
+		"navigationBarBackgroundColor": "#1296db",
+		"backgroundColor": "#ededed"
+	},
+	"tabBar": {
+		"color": "#909399",
+		"selectedColor": "#1296db",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/images/home.png",
+				"selectedIconPath": "static/images/home-fill.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/scan/index",
+				"iconPath": "static/images/scan.png",
+				"selectedIconPath": "static/images/scan-fill.png",
+				"text": "扫一扫"
+			},
+			{
+				"pagePath": "pages/my/index",
+				"iconPath": "static/images/my.png",
+				"selectedIconPath": "static/images/my-fill.png",
+				"text": "我的"
+			}
+		]
+	}
+}
