@@ -1,7 +1,7 @@
 <template>
   <view class="">
     <view class="content">
-      <view v-for="(item,index) in menuList" :key="index">
+      <view v-for="(item,index) in menuList" :key="index" @click="scan(item)">
         <view class="u-flex user-box u-p-l-30 u-p-r-20">
           <view class="u-m-r-10">
             <u-image :src="item.logo" width="100rpx" mode="widthFix" shape="circle"></u-image>
@@ -18,6 +18,10 @@
           </view>
         </view>        
       </view>
+      
+      <view>
+        <u-toast ref="uToast" />
+      </view>
 
       <u-tabbar :list="_tabBar" :mid-button="true" :mid-button-size="60"></u-tabbar>
     </view>
@@ -31,21 +35,55 @@
         title: '工具',
         menuList:[
           {
-            logo:'/static/uview/common/logo.png',
+            logo:'/static/images/school.png',
             title:'扫码入校',
             remark:'扫一扫入校学生校卡二维码',
           }
           ,{
-            logo:'/static/uview/common/logo.png',
+            logo:'/static/images/school.png',
             title:'扫码出校',
             remark:'扫一扫出校学生校卡二维码',
           }
           ,{
-            logo:'/static/uview/common/logo.png',
+            logo:'/static/images/bus.png',
             title:'扫码上车',
             remark:'扫一扫学生校卡二维码',
-          }
+          },{
+            logo:'/static/images/atom.png',
+            title:'关联学生',
+            remark:'扫一扫学生校卡二维码',
+          },{
+            logo:'/static/images/backpack.png',
+            title:'接学生',
+            remark:'扫一扫家长二维码',
+          },
+          {
+            logo:'/static/images/blackboard.png',
+            title:'活动点名',
+            remark:'扫一扫校卡二维码'
+          },
+          {
+            logo:'/static/images/calendar.png',
+            title:'请假',
+            remark:'扫一扫校卡二维码'
+          },
         ]
+      }
+    },
+    methods:{
+      scan(item){
+        console.log(item);
+        // 允许从相机和相册扫码
+        uni.scanCode({
+            success: (res) => {
+                console.log('条码类型：' + res.scanType);
+                console.log('条码内容：' + res.result);
+                this.$refs.uToast.show({
+                  title:`类型:${res.scanType},内容:${res.result}`,
+                  type:'default'                  
+                });
+            }
+        });
       }
     },
     computed: {

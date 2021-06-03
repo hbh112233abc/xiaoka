@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
+    appName:'春田花花幼稚园', //应用名称
     scrollHeight: 600, //windowHeight - app端状态栏高度 - 底部footer-tabbar高度
     statusBarHeight: 0, //状态栏高度
     isHorizontal: false, //是否横屏

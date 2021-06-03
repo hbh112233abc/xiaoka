@@ -2,7 +2,7 @@
 	<view class="wrap">
 		<view class="top"></view>
 		<view class="content">
-			<view class="title">欢迎登录{{appName}}</view>
+			<view class="title">{{appName}}</view>
 			<input class="u-border-bottom" type="number" v-model="tel" placeholder="请输入手机号" />
 			<view class="tips">未注册的手机号验证后自动创建{{appName}}账号</view>
 			<button @tap="submit" :style="[inputStyle]" class="getCaptcha">获取短信验证码</button>
@@ -24,8 +24,8 @@
 			</view>
 			<view class="hint">
 				登录代表同意
-				<text class="link">{{appName}}点评用户协议、隐私政策，</text>
-				并授权使用您的{{appName}}点评账号信息（如昵称、头像、收获地址）以便您统一管理
+				<text class="link">{{appName}}用户协议、隐私政策，</text>
+				并授权使用您的{{appName}}账号信息（如昵称、头像、收获地址）以便您统一管理
 			</view>
 		</view>
 	</view>
@@ -40,7 +40,7 @@ export default {
 	},
 	computed: {
     appName(){
-      return '春田花花';
+      return this.$store.state.appName;
     },
 		inputStyle() {
 			let style = {};
@@ -107,7 +107,7 @@ export default {
 	.buttom {
 		.loginType {
 			display: flex;
-			padding: 350rpx 150rpx 150rpx 150rpx;
+			padding: 200rpx 150rpx 150rpx 150rpx;
 			justify-content:space-between;
 			
 			.item {
