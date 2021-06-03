@@ -1,6 +1,6 @@
-const Env = 'pro' //dev:开发环境 pro:生产环境 test:测试环境
+const Env = 'dev' //dev:开发环境 pro:生产环境 test:测试环境
 
-const apiAddress = 'http://qinqin2020.natapp1.cc' //开发环境
+const apiAddress = 'https://www.ixiaoka.cn/miniprogram/' //开发环境
 
 // const apiAddress = 'http://59.57.251.147:8006' //测试环境
 
