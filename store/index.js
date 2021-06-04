@@ -9,6 +9,7 @@ const store = new Vuex.Store({
     scrollHeight: 600, //windowHeight - app端状态栏高度 - 底部footer-tabbar高度
     statusBarHeight: 0, //状态栏高度
     isHorizontal: false, //是否横屏
+    mobile: "", //用户手机号
     // 自定义tabbar数据
     tabBar: [
       {

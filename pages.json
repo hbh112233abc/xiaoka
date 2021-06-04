@@ -51,6 +51,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/bind/bind",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
