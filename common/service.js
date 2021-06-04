@@ -107,7 +107,7 @@ test.interceptors.response.use((response) => { /* 请求之后拦截器。可以
 		title: response.errorMsg || '出错啦!',
 		icon: 'none'
 	})
-	
+
 	uni.navigateTo({
 		url: '/pages/login/login'
 	})
@@ -121,8 +121,10 @@ http.setConfig((config) => { /* 设置全局配置 */
 	config.header = {
 		...config.header,
 		Accept: 'application/json'
-		/* a: 1, // 演示
-		b: 2 // 演示 */
+	}
+	config.custom = {
+		auth: false, // 是否传token
+		loading: false // 是否使用loading
 	}
 	return config
 })
@@ -133,14 +135,9 @@ http.interceptors.request.use((config) => { /* 请求之前拦截器。可以使
 		...config.header,
 		Accept: 'application/json'
 	}
-	if (!config.custom.ignoreAuth) {
+	if (config.custom.auth) {
 		config.header.Authorization = getTokenStorage()
 	}
-	/*
- if (!token) { // 如果token不存在，return Promise.reject(config) 会取消本次请求
-   return Promise.reject(config)
- }
- */
 	return config
 }, (config) => {
 	return Promise.reject(config)
@@ -149,16 +146,9 @@ http.interceptors.request.use((config) => { /* 请求之前拦截器。可以使
 
 http.interceptors.response.use(async (response) => { /* 请求之后拦截器。可以使用async await 做异步操作  */
 
-	if (response.data.code === config.notLoggedIn) { //未登录或会话超时
-		uni.navigateTo({
-			url: '/pages/login/login'
-		})
-		return Promise.reject(response)
-	}
-
-	if (response.data.code !== config.successCode) {
+	if (response.data.code !== 0) {
 		uni.showToast({
-			title: response.data.description || '出错啦!',
+			title: response.data.msg || '出错啦!',
 			icon: 'none'
 		})
 		return Promise.reject(response)
@@ -169,7 +159,7 @@ http.interceptors.response.use(async (response) => { /* 请求之后拦截器。
 		title: response.errorMsg || '出错啦!',
 		icon: 'none'
 	})
-	
+
 	uni.navigateTo({
 		url: '/pages/login/login'
 	})
