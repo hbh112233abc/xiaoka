@@ -9,9 +9,9 @@
  */
 import Request from '@/utils/luch-request/index.js'
 
-import config from '@/common/config.js'
+import config from '@/config.js'
 
-const apiAddress = config.apiAddress
+const BASE_URI = config.base_uri
 
 const getTokenStorage = () => {
 	let token = ''
@@ -37,7 +37,7 @@ const test = new Request()
  **/
 
 test.setConfig((config) => { /* 设置全局配置 */
-	config.baseURL = apiAddress
+	config.baseURL = BASE_URI
 	config.header = {
 		...config.header,
 		Accept: 'application/json'
@@ -117,7 +117,7 @@ test.interceptors.response.use((response) => { /* 请求之后拦截器。可以
 
 const http = new Request()
 http.setConfig((config) => { /* 设置全局配置 */
-	config.baseURL = apiAddress /* 根域名不同 */
+	config.baseURL = BASE_URI /* 根域名不同 */
 	config.header = {
 		...config.header,
 		Accept: 'application/json'

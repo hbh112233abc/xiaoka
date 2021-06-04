@@ -15,8 +15,8 @@
         <u-tag text="校车司机" mode="plain" type="error" />
       </view>
     </view>
-    
-    <news></news>    
+
+    <news></news>
 
     <!-- 底部菜单 -->
     <u-tabbar :list="_tabBar" :mid-button="true" :mid-button-size="60"></u-tabbar>
@@ -31,7 +31,7 @@
     },
     data() {
       return {
-        title: '春田花花幼稚园',
+        title: this.$store.state.appName,
         list: [
           '寒雨连江夜入吴',
           '平明送客楚山孤',
@@ -40,7 +40,9 @@
         ]
       }
     },
-    mounted() {},
+    mounted() {
+      uni.setNavigationBarTitle({title: this.$store.state.appName})
+    },
     computed: {
       _tabBar() {
         return this.$store.state.tabBar;
@@ -89,7 +91,5 @@
     height: 500rpx;
     /* background-color: #2B85E4; */
   }
-
-  .label .tag {}
 
 </style>
