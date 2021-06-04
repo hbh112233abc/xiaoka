@@ -19,8 +19,8 @@ import uView from 'uview-ui';
 Vue.use(uView);
 
 //挂载助手函数库
-import $U from '@/utils/common/utils.js'
-Vue.prototype.$U = $U
+// import $U from '@/utils/common/utils.js'
+// Vue.prototype.$U = $U
 
 // i18n部分的配置
 // 引入语言包，注意路径
